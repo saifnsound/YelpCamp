@@ -47,7 +47,16 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
         var lat = data[0].latitude;
         var lng = data[0].longitude;
         var location = data[0].formattedAddress;
-        var newCampground = { name: name, image: image, description: desc, author: author, location: location, lat: lat, lng: lng, price: price };
+        var newCampground = {
+            name: name,
+            image: image,
+            description: desc,
+            author: author,
+            location: location,
+            lat: lat,
+            lng: lng,
+            price: price
+        };
         // Create a new campground and save to DB
         Campground.create(newCampground, function (err, newlyCreated) {
             if (err) {
@@ -101,7 +110,15 @@ router.put("/:id", middleware.checkCampgroundOwnership, function (req, res) {
         var lat = data[0].latitude;
         var lng = data[0].longitude;
         var location = data[0].formattedAddress;
-        var newData = { name: req.body.name, image: req.body.image, description: req.body.description, location: location, lat: lat, lng: lng, price: req.body.price};
+        var newData = {
+            name: req.body.name,
+            image: req.body.image,
+            description: req.body.description,
+            location: location,
+            lat: lat,
+            lng: lng,
+            price: req.body.price
+        };
         Campground.findByIdAndUpdate(req.params.id, newData, function (err, campground) {
             if (err) {
                 req.flash("error", err.message);
