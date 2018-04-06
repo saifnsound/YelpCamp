@@ -33,7 +33,7 @@ app.use(flash());
 // PASSPORT CONFIGURATION
 app.use(
 	require("express-session")({
-		secret: "Once again Rusty wins cutest dog!",
+		secret: "Life is a sux",
 		resave: false,
 		saveUninitialized: false
 	})
